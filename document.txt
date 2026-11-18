@@ -1,0 +1,42 @@
+SOURCE TO HTML CONVERTER PROJECT
+
+Project Name:
+
+     Source To HTML Converter
+
+Project Description:
+
+     This project converts C source code into an HTML file with syntax highlighting.  It identifies keywords, variables, operators, 
+     symbols, strings, numbers, comments and header files. It displays the converted code in a web browser with different colors 
+     similar to VS Code Dark Theme.
+
+Files Used:
+
+    main.c – Handles command-line arguments and controls the conversion process.
+
+    header.h – Contains function declarations and header guards.
+
+    html_header_footer.c – Creates the basic HTML structure and closing tags.
+
+    source_to_html.c – Reads C source code, identifies tokens and converts them into HTML.
+
+    style.css – Defines different colors for syntax highlighting.
+
+    input.txt – Contains the input C source code.
+
+    output.html – Stores the converted HTML code.
+
+
+
+Project Process:
+
+        First, the user provides the input C file through command-line arguments. 
+        The program checks the command-line arguments and opens the input file in read mode. 
+        It creates the output.html file in write mode.
+        The html_initialize() function writes the basic HTML structure into the output file. 
+        The source_to_html() function reads the input file character by character using fgetc().
+        The program identifies keywords, variables, operators, symbols, strings, numbers, comments and header files. 
+        It adds appropriate HTML span tags and CSS class names to the identified tokens.
+        The style.css file applies different colors to the identified tokens. 
+        Finally, the html_end() function writes the closing HTML tags.
+        The generated output.html file can be opened in a web browser to view the C source code with syntax highlighting.

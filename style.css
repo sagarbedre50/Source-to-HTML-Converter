@@ -1,0 +1,63 @@
+body {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    margin: 0;
+    padding: 10px;
+}
+pre {
+    font-size: 16px;
+    font-family: Consolas, monospace;
+    line-height: 1.5;
+    white-space: pre;
+}
+.variable {
+    color: #9CDCFE;
+}
+.ip_op{ 
+    color: #DCDCAA;
+}
+
+.keyword {
+    color: #569CD6;
+}
+
+.keyword1 {
+    color: #C586C0;
+}
+
+.keyword1 {
+    color: #C586C0;
+}
+
+.comment {
+    color: #6A9955;
+}
+
+.preprocessor {
+    color: #C586C0;
+}
+
+
+.header {
+    color: #CE9178;
+}
+
+.string {
+    color: #CE9178;
+}
+
+.digits {
+    color: #B5CEA8;
+}
+
+.single_char {
+   color: #CE9178;
+}
+
+.symbol {
+    color: #C586C0;
+}
+
+.operator {
+    color: #D4D4D4;
+}

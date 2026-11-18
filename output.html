@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Source To HTML</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<pre><code>
+<span class="preprocessor">#include</span><span class="header">&ltstdio.h&gt</span>
+<span class="preprocessor">#include</span><span class="header">&ltstring.h&gt</span>
+<span class="preprocessor">#include</span><span class="string">"header.h"</span>
+<span class="keyword">int</span> <span class="variable">main</span><span class="symbol">(</span><span class="keyword">int</span> <span class="variable">argc</span><span class="operator">,</span> <span class="keyword">char</span> <span class="operator">*</span><span class="variable">argv</span><span class="symbol">[</span><span class="symbol">]</span><span class="symbol">)</span>
+<span class="symbol">{</span>
+    <span class="keyword1">if</span><span class="symbol">(</span><span class="variable">argc</span><span class="operator">!</span><span class="operator">=</span><span class="digits">2</span><span class="symbol">)</span> <span class="comment">// to check valid command line argument and in it is not valid then display the valid command.</span>    <span class="symbol">{</span>
+        <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"+---------------------------------------------+"</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"| Please enter valid command :                |"</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"| Ex : ./a.out sample.txt                     |"</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"+---------------------------------------------+"</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="keyword1">return</span> <span class="operator">-</span><span class="digits">1</span><span class="operator">;</span>
+    <span class="symbol">}</span>
+
+     <span class="variable">FILE</span> <span class="operator">*</span><span class="variable">fp</span><span class="operator">;</span>
+     <span class="variable">fp</span><span class="operator">=</span><span class="ip_op">fopen</span><span class="symbol">(</span><span class="variable">argv</span><span class="symbol">[</span><span class="digits">1</span><span class="symbol">]</span><span class="operator">,</span><span class="string">"r"</span><span class="symbol">)</span><span class="operator">;</span>
+
+     <span class="keyword1">if</span><span class="symbol">(</span><span class="variable">fp</span><span class="operator">=</span><span class="operator">=</span><span class="variable">NULL</span><span class="symbol">)</span>
+     <span class="symbol">{</span>
+        <span class="ip_op">perror</span><span class="symbol">(</span><span class="string">"ERROR :"</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="keyword1">return</span> <span class="operator">-</span><span class="digits">1</span><span class="operator">;</span>
+     <span class="symbol">}</span>
+
+     <span class="keyword">int</span> <span class="variable">ch</span><span class="operator">;</span>
+     
+     <span class="variable">FILE</span> <span class="operator">*</span><span class="variable">hfp</span><span class="operator">;</span>
+     <span class="variable">hfp</span><span class="operator">=</span><span class="ip_op">fopen</span><span class="symbol">(</span><span class="string">"output.html"</span><span class="operator">,</span><span class="string">"w"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="keyword1">if</span><span class="symbol">(</span><span class="variable">hfp</span><span class="operator">=</span><span class="operator">=</span><span class="variable">NULL</span><span class="symbol">)</span>
+     <span class="symbol">{</span>
+        <span class="ip_op">perror</span><span class="symbol">(</span><span class="string">"ERROR : "</span><span class="symbol">)</span><span class="operator">;</span>
+        <span class="keyword1">return</span> <span class="operator">-</span><span class="digits">1</span><span class="operator">;</span>
+     <span class="symbol">}</span>
+     
+     <span class="variable">html_initialize</span><span class="symbol">(</span><span class="variable">hfp</span><span class="symbol">)</span><span class="operator">;</span>  <span class="comment">// html initialization in .html file</span>     <span class="variable">source_to_html</span><span class="symbol">(</span><span class="variable">fp</span><span class="operator">,</span><span class="variable">hfp</span><span class="symbol">)</span><span class="operator">;</span> <span class="comment">// to convert c code to html </span>     <span class="variable">html_end</span><span class="symbol">(</span><span class="variable">hfp</span><span class="symbol">)</span><span class="operator">;</span> <span class="comment">// html end in .html files</span>     
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"+================================================+\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"|          SOURCE CODE TRANSFORMATION DONE       |\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"+================================================+\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"|  SUCCESS:- HTML file generated successfully!   |\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"|  FILE NAME:-    output.html                    |\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"|  ACTION:-  Launch browser to view your code.   |\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"|  STATUS:-  Syntax highlighting is ready!       |\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"+================================================+\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">printf</span><span class="symbol">(</span><span class="string">"\n"</span><span class="symbol">)</span><span class="operator">;</span>
+     
+     <span class="ip_op">fclose</span><span class="symbol">(</span><span class="variable">hfp</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="ip_op">fclose</span><span class="symbol">(</span><span class="variable">fp</span><span class="symbol">)</span><span class="operator">;</span>
+     <span class="keyword1">return</span> <span class="digits">0</span><span class="operator">;</span>
+     
+<span class="symbol">}</span></code></pre>
+</body>
+</html>
